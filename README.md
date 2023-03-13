@@ -3,7 +3,7 @@ Working of Kafka
 
 Kafka is a distributed messaging system/streaming platform.
 
--------------------------------------------------
+-----------------------------------------------------------------------------------------
 
 Typical Messaging system
 ------------------------
@@ -13,7 +13,7 @@ Typical Messaging system
 
 But Kafka is not just another messaging system.
 
------------------------------------------------
+------------------------------------------------------------------------------------------
 
 Working of kafka
 --------------------------
@@ -59,9 +59,9 @@ ack is basically a confirmation that the message was delivered from the producer
 Types of Ack 
 - ack - 0 -> dont want to receive an ack from kafka. In case of broker failure, message is lost.
 - ack - 1 -> receive an ack from only the Partition leader. Data is lost if the leader goes down.
-- ack - all -> Most reliable config. Leader and allm its replicas should send ack. This is to ensure that there is no data loss.
+- ack - all -> Most reliable config. Leader and all its replicas should send ack. This is to ensure that there is no data loss.
 
--------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 Consumers and Consumer Groups
 -----------------------------
@@ -71,4 +71,11 @@ Consumers and Consumer Groups
 - That's why we need to be careful while choosing the number of partitions and while producing the messages.
 
 
+---------------------------------------------------------------------
+
+- The same way multiple producers can write to the same topic - multiple consumers can consume from the same topic, splitting data between them.
+- KafkaConsumers are part if a consumer group. So when multiple consumers that are subscribed to same topic belonging to the same consumer group, each consumer will receive a message from a subset of partitions of a topic.
+- Scaling of kafka is by adding more consumers to the consumer group.
+
+----------------------------------------------------------------------------------------------------
 
